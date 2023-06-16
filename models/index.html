@@ -1,0 +1,33 @@
+<meta charset="utf-8" />
+<title>demo</title>
+<div id="app"></div>
+
+<script>
+  if (navigator.geolocation) {
+    console.log('h5获取1', navigator.geolocation);
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        console.log(position);
+        if (position.coords) {
+          const coords = position.coords;
+          const latitude = coords.latitude;
+          const longitude = coords.longitude;
+          alert(`h5获取定位${coords}${latitude}${longitude}`);
+        } else {
+          alert(`h5获取定位${position}`);
+        }
+      },
+      err => {
+        alert(`h5获取定位失败${JSON.stringify(err)}`);
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
+    );
+  } else {
+    console.log('h5获取2');
+    alert('抱歉，您的浏览器不支持定位');
+  }
+</script>
