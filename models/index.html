@@ -28,6 +28,7 @@
     );
 
     setTimeout(() => {
+      alert('123');
       navigator.geolocation.getCurrentPosition(
         position => {
           console.log(position);
@@ -52,6 +53,7 @@
     }, 10000);
 
     setTimeout(() => {
+      alert('456');
       navigator.geolocation.getCurrentPosition(
         position => {
           console.log(position);
