@@ -1,7 +1,15 @@
 <meta charset="utf-8" />
 <title>demo</title>
-<div id="app">123</div>
+<div id="container"></div>
 
+<script src="https://webapi.amap.com/maps?v=2.0&key=7a13e8dfd220a945115938104758654a"></script>
+<script>
+  var map = new AMap.Map('container', {
+    viewMode: '2D', // 默认使用 2D 模式，如果希望使用带有俯仰角的 3D 模式，请设置 viewMode: '3D'
+    zoom: 11, // 初始化地图层级
+    center: [116.397428, 39.90923], // 初始化地图中心点
+  });
+</script>
 <script>
   if (navigator.geolocation) {
     console.log('h5获取1', navigator.geolocation);
@@ -26,58 +34,16 @@
         maximumAge: 0,
       }
     );
-
-    setTimeout(() => {
-      alert('123');
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          console.log(position);
-          if (position.coords) {
-            const coords = position.coords;
-            const latitude = coords.latitude;
-            const longitude = coords.longitude;
-            alert(`h5获取定位${coords}${latitude}${longitude}`);
-          } else {
-            alert(`h5获取定位${position}`);
-          }
-        },
-        err => {
-          alert(`h5获取定位失败${JSON.stringify(err)}`);
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0,
-        }
-      );
-    }, 10000);
-
-    setTimeout(() => {
-      alert('456');
-      navigator.geolocation.getCurrentPosition(
-        position => {
-          console.log(position);
-          if (position.coords) {
-            const coords = position.coords;
-            const latitude = coords.latitude;
-            const longitude = coords.longitude;
-            alert(`h5获取定位${coords}${latitude}${longitude}`);
-          } else {
-            alert(`h5获取定位${position}`);
-          }
-        },
-        err => {
-          alert(`h5获取定位失败${JSON.stringify(err)}`);
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 0,
-        }
-      );
-    }, 20000);
   } else {
     console.log('h5获取2');
     alert('抱歉，您的浏览器不支持定位');
   }
 </script>
+<style>
+  html,
+  body,
+  #container {
+    width: 100%;
+    height: 100%;
+  }
+</style>
